@@ -1,0 +1,24 @@
+
+
+digraph my_fsm{
+    fontname="Helvetica,Arial,sans-serif"
+    node [fontname="Helvetica,Arial,sans-serif"]
+    edge [fontname="Helvetica,Arial,sans-serif"]
+    rankdir=LR;
+    node [shape = doublecircle]; RAD_WAIT_INIT;
+    node [shape = circle];
+
+    RAD_WAIT_INIT [label="RAD_WAIT_INIT"];
+    RAD_IDLE [label="RAD_IDLE"];
+    RAD_PROCESSING[label="RAD_PROCESSING"];
+    RAD_ERROR [label="RAD_ERROR"];
+
+    RAD_WAIT_INIT->RAD_IDLE [label ="START_s = '1'"];
+    RAD_PROCESSING-> RAD_IDLE [label = "DONE_s = '1'"];
+
+    RAD_IDLE ->RAD_PROCESSING [label="INIT_s = '1'"];
+    RAD_PROCESSING -> RAD_ERROR[label="RAD_ERROR_s = '1'"];
+
+    RAD_ERROR -> RAD_IDLE;
+
+}

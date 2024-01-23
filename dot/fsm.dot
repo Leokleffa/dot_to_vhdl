@@ -1,0 +1,25 @@
+
+
+digraph my_fsm{
+    fontname="Helvetica,Arial,sans-serif"
+    node [fontname="Helvetica,Arial,sans-serif"]
+    edge [fontname="Helvetica,Arial,sans-serif"]
+    rankdir=LR;
+    node [shape = doublecircle]; WAIT_INIT;
+    node [shape = circle];
+
+    WAIT_INIT [label="WAIT_INIT"];
+    IDLE [label="IDLE"];
+    PROCESSING[label="PROCESSING"];
+    ERROR [label="ERROR"];
+
+    ERROR -> HANDLE_ERROR;
+    HANDLE_ERROR -> NO_RESPONSE[label="ERROR"];
+
+    WAIT_INIT->IDLE [label ="START_s = '1'"];
+    PROCESSING-> IDLE [label = "DONE_s = '1'"];
+
+    IDLE ->PROCESSING [label="INIT_s = '1'"];
+    PROCESSING -> ERROR[label="ERROR_s = '1'"];
+
+}
